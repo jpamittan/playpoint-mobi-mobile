@@ -11,15 +11,21 @@ import {
   createDrawerNavigator
 } from "vue-native-router";
 import { Root } from "native-base";
-import MobiHomeScreen from "./screens/_mobi/home/index.vue";
+// MOBI screens
+import MobiGameScreen from "./screens/_mobi/games/index.vue";
+import MobiCategoryScreen from "./screens/_mobi/games/category.vue";
+import MobiLoginScreen from "./screens/_mobi/login/index.vue";
+import MobiLogoutScreen from "./screens/_mobi/login/logout.vue";
 import MobiSideBarScreen from "./screens/_mobi/sidebar/index.vue";
+import MobiSearchScreen from "./screens/_mobi/search/index.vue";
 
 const Drawer = createDrawerNavigator(
   {
-    MobiHome: { screen: MobiHomeScreen },
+    Games: { screen: MobiGameScreen },
+    SignupLogin: { screen: MobiLoginScreen }
   },
   {
-    initialRouteName: "MobiHome",
+    initialRouteName: "Games",
     contentOptions: {
       activeTintColor: "#e91e63"
     },
@@ -30,7 +36,10 @@ const Drawer = createDrawerNavigator(
 const AppNavigation = createAppContainer(
   createStackNavigator(
     {
-      Drawer: { screen: Drawer }
+      Drawer: { screen: Drawer },
+      GamesByCategory: { screen: MobiCategoryScreen },
+      SearchGames: { screen: MobiSearchScreen },
+      Logout: { screen: MobiLogoutScreen }
     },
     {
       initialRouteName: "Drawer",

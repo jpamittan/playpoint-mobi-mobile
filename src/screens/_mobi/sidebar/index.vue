@@ -10,9 +10,9 @@
         class="drawer-image"
         :style="stylesObj.drawerImageObj"
       />
-      <nb-list>
+      <nb-list v-if="isLogged">
         <nb-list-item
-          v-for="data in datas"
+          v-for="data in dataLoggedIn"
           :key="data.route"
           button
           noBorder
@@ -28,13 +28,26 @@
               {{ data.name }}
             </nb-text>
           </nb-left>
-          <nb-right v-if="data.submenus">
+        </nb-list-item>
+      </nb-list>
+      <nb-list v-else>
+        <nb-list-item
+          v-for="data in dataLoggedOut"
+          :key="data.route"
+          button
+          noBorder
+          :onPress="() => handleListItemClick(data)"
+        >
+          <nb-left>
             <nb-icon
               active
-              name="ios-arrow-down"
-              :style="{ fontSize: 26, width: 30 }"
+              :name="data.icon"
+              :style="{ color: data.color, fontSize: 26, width: 30 }"
             />
-          </nb-right>
+            <nb-text>
+              {{ data.name }}
+            </nb-text>
+          </nb-left>
         </nb-list-item>
       </nb-list>
     </nb-content>
@@ -44,13 +57,25 @@
 <script>
 import { Dimensions, Platform } from "react-native";
 import drawerImage from "../../../../assets/mobi/playpoint_logo.png";
-
+import store from "../../../store";
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+
 export default {
   props: {
     navigation: {
       type: Object
+    }
+  },
+  created() {
+    console.log("created")
+  },
+  mounted() {
+    console.log("mounted")
+  },
+  computed: {
+    isLogged() {
+      return store.state.isLogged;
     }
   },
   data() {
@@ -63,7 +88,7 @@ export default {
         drawerImageObj: {
           left: Platform.OS === "android" ? deviceWidth / 11.5 : deviceWidth / 10.5,
           top:
-            Platform.OS === "android" ? deviceHeight / 36 : deviceHeight / 35,
+            Platform.OS === "android" ? deviceHeight / 26 : deviceHeight / 25,
           resizeMode: "cover"
         },
         badgeText: {
@@ -72,81 +97,29 @@ export default {
           fontWeight: "400"
         }
       },
-      datas: [
-        {
-          name: "Home",
-          route: "MobiHome",
-          icon: "home",
-          color: "#2ECC71",
-          bg: "#C5F442"
-        },
+      dataLoggedIn: [
         {
           name: "Games",
           route: "Games",
           icon: "logo-game-controller-b",
           color: "#E67E22",
-          bg: "#C5F442",
-          submenus: true
+          bg: "#C5F442"
         },
         {
-          name: "Spotlight",
-          route: "GameSpotlight",
-          bg: "#C5F442",
-          show: "games"
-        },
+          name: "Logout",
+          route: "Logout",
+          icon: "md-power",
+          color: "#D95664",
+          bg: "#C5F442"
+        }
+      ],
+      dataLoggedOut: [
         {
-          name: "Action",
-          route: "GameAction",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Adventure",
-          route: "GameAdventure",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Big Kids",
-          route: "GameBigKids",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Board",
-          route: "GameBoard",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Cards",
-          route: "GameCards",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Casual",
-          route: "GameCasual",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Family",
-          route: "GameFamily",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Kids",
-          route: "GameKids",
-          bg: "#C5F442",
-          parent: "games"
-        },
-        {
-          name: "Match 3",
-          route: "GameMatch3",
-          bg: "#C5F442",
-          parent: "games"
+          name: "Games",
+          route: "Games",
+          icon: "logo-game-controller-b",
+          color: "#E67E22",
+          bg: "#C5F442"
         },
         {
           name: "Signup / Login",
@@ -154,7 +127,7 @@ export default {
           icon: "person",
           color: "#7FB3D5",
           bg: "#C5F442"
-        },
+        }
       ]
     };
   },
@@ -180,7 +153,7 @@ export default {
 .drawer-image {
   align-self: center;
   position: absolute;
-  height: 75;
+  height: 55;
   width: 210;
 }
 </style>
