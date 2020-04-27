@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { Dimensions, Platform } from "react-native";
 import { required } from "vuelidate/lib/validators";
 import { Toast } from "native-base";
 import clumsyBird from "../../../../assets/mobi/clumsy-bird-thumbnail.png";

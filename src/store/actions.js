@@ -54,3 +54,7 @@ export function LOGOUT ({ commit, dispatch }) {
     resolve();
   })
 }
+
+export function SELECTED_GAME ({ commit, dispatch }, gameUrl) {
+  return commit('SET_SELECTED_GAME_URL', gameUrl);
+}

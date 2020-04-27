@@ -21,14 +21,14 @@
     <nb-content :style="{ backgroundColor: screenBgColor }" class="game-container">
       <view v-if="spotlight" class="card-wrapper">
           <nb-card v-for="item in spotlightList" :key="item.id" class="card-item">
-            <nb-card-item cardBody>
+            <nb-card-item cardBody button :onPress="() => playGame(item.gameurl)">
               <image
                 :source="{ uri: item.featured_image }"
                 class="card-item-image"
                 :style="stylesObj.cardItemImage"
               />
             </nb-card-item>
-            <nb-card-item footer style="flex: 1; flexDirection: 'column'">
+            <nb-card-item footer bordered style="flex: 1; flexDirection: 'column'; borderBottomWidth: 0;">
               <nb-text>{{ item.name }}</nb-text>
             </nb-card-item>
           </nb-card>
@@ -66,7 +66,6 @@
 </template>
 
 <script>
-import { Dimensions, Platform } from "react-native";
 import store from "../../../store";
 
 export default {
@@ -85,7 +84,7 @@ export default {
       screenBgColor: '#FFFFFF',
       stylesObj: {
         cardItemImage: {
-          resizeMode: "cover"
+          resizeMode: "cover",
         }
       },
       spotlight: true,
@@ -115,6 +114,10 @@ export default {
     },
     searchGames() {
       this.navigation.navigate("SearchGames");
+    },
+    playGame(gameurl){
+      store.dispatch('SELECTED_GAME', gameurl);
+      this.navigation.navigate("PlayGame");
     }
   }
 };
@@ -131,15 +134,15 @@ export default {
   flex-direction: row;
 }
 .card-item {
-  flex-basis: 50%;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+  flex-basis: 48%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   border-radius: 0;
 }
 .card-item-image {
   flex: 1;
-  height: 150;
+  height: 120;
 }
 </style>

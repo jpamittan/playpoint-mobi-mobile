@@ -13,6 +13,7 @@ const store = new Vuex.Store({
 		isLogged: false,
 		token: "",
 		selected_category: "",
+		selected_game_url: "",
 		spotlights: [],
 		categories: [],
 		gamesPerCategory: [],

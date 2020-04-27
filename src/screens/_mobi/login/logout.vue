@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { Dimensions, Platform } from "react-native";
 import { Toast } from "native-base";
 import store from "../../../store";
 

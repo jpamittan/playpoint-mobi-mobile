@@ -40,3 +40,7 @@ export function LOGOUT_USER (state) {
 	state.isLogged = false;
 	state.isLoading = false;
 }
+
+export function SET_SELECTED_GAME_URL (state, gameUrl) {
+	state.selected_game_url = gameUrl;
+}

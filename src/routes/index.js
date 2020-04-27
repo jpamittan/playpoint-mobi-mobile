@@ -6,8 +6,8 @@ import {
 // MOBI screens
 import MobiCategoryScreen from "../screens/_mobi/games/category.vue";
 import MobiLogoutScreen from "../screens/_mobi/login/logout.vue";
+import MobiPlayGameScreen from "../screens/_mobi/play/index.vue";
 import MobiSearchScreen from "../screens/_mobi/search/index.vue";
-
 import Drawer from './drawer'
 
 export default createAppContainer(
@@ -16,6 +16,7 @@ export default createAppContainer(
             Drawer: { screen: Drawer },
             GamesByCategory: { screen: MobiCategoryScreen },
             SearchGames: { screen: MobiSearchScreen },
+            PlayGame: { screen: MobiPlayGameScreen },
             Logout: { screen: MobiLogoutScreen }
         },
         {
