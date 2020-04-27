@@ -1,14 +1,14 @@
 <template>
   <root>
-    <app-navigation></app-navigation>
+    <router-view />
   </root>
 </template>
 
 <script>
 import { Root } from "native-base";
-import AppNavigation from './routes/index'
+import RouterView from './routes/index'
 
 export default {
-  components: { Root, AppNavigation }
+  components: { Root, RouterView }
 };
 </script>
