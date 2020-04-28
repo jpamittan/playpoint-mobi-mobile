@@ -1,24 +1,21 @@
 import Vue from "vue-native-core";
 import Vuex from "vuex";
-import * as actions from "./actions";
-import * as mutations from "./mutations";
+import authStore from './auth'
+import gamesCategoryStore from './games-category'
+import gameSelectedStore from './game-selected'
+import searchStore from './search'
+import spotlightStore from './spotlight'
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-	actions,
-	mutations,
-	state: {
-		isLoading: false,
-		isLogged: false,
-		token: "",
-		selected_category: "",
-		selected_game_url: "",
-		spotlights: [],
-		categories: [],
-		gamesPerCategory: [],
-		searchGames: []
-	}
+	modules: {
+		authStore,
+		gamesCategoryStore,
+		gameSelectedStore,
+        searchStore,
+        spotlightStore
+    }
 });
 
 export default store;

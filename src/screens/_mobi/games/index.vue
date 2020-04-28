@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import store from "../../../store";
 
 export default {
@@ -75,8 +76,10 @@ export default {
     }
   },
   mounted() {
-    store.dispatch('SPOTLIGHTS');
-    store.dispatch('CATEGORIES');
+    this.SPOTLIGHTS()
+    this.CATEGORIES()
+    // store.dispatch('SPOTLIGHTS');
+    // store.dispatch('CATEGORIES');
   },
   data() {
     return {
@@ -92,14 +95,22 @@ export default {
     };
   },
   computed: {
-    spotlightList() {
-      return store.state.spotlights;
-    },
-    categoryList() {
-      return store.state.categories;
-    }
+    ...mapGetters('spotlightStore', {
+      spotlightList: 'spotlights'
+    }),
+    ...mapGetters('gamesCategoryStore', {
+      categoryList: 'categories',
+    })
+    // spotlightList() {
+    //   return store.state.spotlights;
+    // },
+    // categoryList() {
+    //   return store.state.categories;
+    // }
   },
   methods: {
+    ...mapActions('spotlightStore', ['SPOTLIGHTS']),
+    ...mapActions('gamesCategoryStore', ['CATEGORIES']),
     togglespotlight() {
       this.spotlight = true;
       this.categories = false;
