@@ -1,39 +1,39 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+  "name": "playpointapp-nv",
+  "version": "1.0.0",
+  "description": "A native application built with NativeScript-Vue",
+  "author": "Aljo Victor Gabot",
+  "license": "MIT",
+  "nativescript": {
+    "id": "org.nativescript.application",
+    "templateVersion": "v2",
+    "tns-android": {
+      "version": "6.5.0"
+    },
+    "tns-ios": {
+      "version": "6.5.0"
+    }
   },
   "dependencies": {
-    "@expo/vector-icons": "^10.0.6",
+    "@nativescript/theme": "^2.2.1",
+    "@vue/devtools": "^5.3.3",
     "axios": "^0.19.2",
-    "expo": "~37.0.3",
-    "native-base": "2.13.8",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
-    "react-native-gesture-handler": "~1.3.0",
-    "react-native-paper": "^2.16.0",
-    "react-native-orientation": "^3.1.3",
-    "react-native-reanimated": "~1.2.0",
-    "react-native-screens": "^2.5.0",
-    "react-native-web": "~0.11.7",
-    "react-native-webview": "^9.3.0",
-    "vue-axios": "^2.1.5",
-    "vue-native-core": "^0.1.4",
-    "vue-native-helper": "^0.1.4",
-    "vue-native-router": "^0.1.1",
-    "vuelidate": "^0.7.5",
-    "vuex": "^3.3.0",
-    "expo-screen-orientation": "~1.0.0"
+    "nativescript-fonticon": "^2.0.0",
+    "nativescript-socketio": "^3.3.1",
+    "nativescript-toasty": "^3.0.0-alpha.2",
+    "nativescript-vue": "^2.6.1",
+    "nativescript-vue-devtools": "^1.4.0",
+    "tns-core-modules": "^6.5.1",
+    "vuex": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0",
-    "vue-native-scripts": "^0.1.4"
-  },
-  "private": true
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.1.0",
+    "nativescript-dev-webpack": "^1.5.1",
+    "nativescript-vue-template-compiler": "^2.6.0",
+    "nativescript-worker-loader": "~0.11.0",
+    "node-sass": "^4.13.1",
+    "vue-loader": "^15.9.1"
+  }
 }
