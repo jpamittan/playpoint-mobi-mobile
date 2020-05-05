@@ -3,17 +3,15 @@ import { postData } from "./fetch";
 
 export function SPOTLIGHTS ({ commit, dispatch }) {
   commit('SET_IS_LOADING');
-  return fetchData("games/new")
+  return fetchData("game?limit=8&type=new")
     .then(spotlights => {
-      console.log(spotlights);
       return commit('SET_SPOTLIGHTS', { spotlights });
     });
 }
 
 export function CATEGORIES ({ commit, dispatch }) {
-  return fetchData("games/tags")
+  return fetchData("game/tags")
     .then(categories => {
-      console.log(categories);
       return commit('SET_CATEGORIES', { categories });
     });
 }
@@ -24,7 +22,7 @@ export function SELECTED_CATEGORIES ({ commit, dispatch }, category) {
 
 export function GAMES_CATEGORY ({ commit, dispatch }, category) {
   commit('SET_IS_LOADING');
-  return fetchData(`games/category/${category}`)
+  return fetchData(`game?tag=${category}`)
     .then(games => {
       return commit('SET_GAMES_PER_CATEGORY', { games });
     });

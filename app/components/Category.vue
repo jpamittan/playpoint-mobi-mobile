@@ -52,6 +52,7 @@
         },
         computed: {
             gamesByCategoryList() {
+                console.log(store.state.gamesPerCategory);
                 return store.state.gamesPerCategory;
             },
             isLoading() {

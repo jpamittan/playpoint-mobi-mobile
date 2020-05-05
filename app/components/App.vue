@@ -60,8 +60,7 @@
         data() {
             return {
                 // spotlightList: [],
-                // categoryList: [],
-                isLoading: false
+                // categoryList: []
             }
         },
         computed: {
@@ -73,15 +72,17 @@
             //     categoryList: 'categories',
             // })
             spotlightList() {
-                console.log("test");
+                console.log(store.state.spotlights);
                 return store.state.spotlights;
             },
             categoryList() {
+                console.log(store.state.categories);
                 return store.state.categories;
             },
-            // isLoading() {
-            //     return store.state.isLoading;
-            // }
+            isLoading() {
+                // return store.state.isLoading;
+                return false;
+            }
         },
         methods: {
             // ...mapActions('spotlightStore', ['SPOTLIGHTS']),
