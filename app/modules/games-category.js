@@ -36,7 +36,7 @@ const actions = {
             }
         );
     },
-    SELECTED_CATEGORIES ({ commit, dispatch }, category) {
+    SELECTED_CATEGORY ({ commit, dispatch }, category) {
         return commit('SET_SELECTED_CATEGORY', category);
     },
     GAMES_CATEGORY ({ commit, dispatch }, category) {

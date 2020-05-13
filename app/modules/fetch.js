@@ -5,6 +5,7 @@ const DEFAULT_API_SECRET = "w6Pzi4ZOmpy6bWRF91ztbuDNf4Z9xMy55lueI3X9b";
 const HEADER = {
   headers: {
     "Accept": "application/json",
+    "Content-Type": "application/json",
     "Authorization": DEFAULT_API_KEY,
     "Secret": DEFAULT_API_SECRET
   }

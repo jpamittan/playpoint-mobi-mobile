@@ -6,15 +6,15 @@
             </StackLayout>
         </ActionBar>
         <FlexboxLayout flexDirection="column" v-if="isLoading">
-            <Label text="Loading please wait..." height="100" class="game-na" />
+            <Label text="Searching please wait..." height="100" class="game-na" />
         </FlexboxLayout>
         <ScrollView v-else>
             <WrapLayout>
-                <FlexboxLayout width="100%" flexDirection="column" v-if="!gamesByCategoryList.length">
+                <FlexboxLayout width="100%" flexDirection="column" v-if="!searchGameList.length">
                     <Label text="No games found." height="100" class="game-na" />
                 </FlexboxLayout>
                 <StackLayout v-else 
-                    v-for="item in gamesByCategoryList" :key="item.id" 
+                    v-for="item in searchGameList" :key="item.id" 
                     width="47.5%" 
                     backgroundColor="#FFFFFF"
                     @tap="playGame(item.gameurl, item.name)"
@@ -42,26 +42,20 @@
 
     export default {
         created() {
-            store.dispatch('GAMES_CATEGORY', store.state.selected_category)
+            store.dispatch('SEARCH_GAMES', store.state.searchQuery)
             .then(response => {
-                this.gamesByCategoryList = store.state.gamesPerCategory;
+                this.searchGameList = store.state.searchGames;
                 this.isLoading = false;
             });
         },
         data() {
             return {
                 isLoading: true,
-                gamesByCategoryList: []
+                searchGameList: []
             }
         },
         computed: {
-            // gamesByCategoryList() {
-            //     console.log(store.state.gamesPerCategory);
-            //     return store.state.gamesPerCategory;
-            // },
-            // isLoading() {
-            //     return store.state.isLoading;
-            // }
+
         },
         methods: {
             playGame(gameurl, gameName) {

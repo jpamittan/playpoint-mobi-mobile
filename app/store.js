@@ -14,9 +14,11 @@ export default new Vuex.Store({
 		isLoading: false,
 		selected_category: "",
 		selected_game_url: "",
+		selected_game_name: "",
 		spotlights: [],
 		categories: [],
 		gamesPerCategory: [],
+		searchQuery: "",
 		searchGames: []
 	},
 	actions,

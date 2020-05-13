@@ -28,3 +28,11 @@ export function SET_SEARCH_GAMES (state, { games }) {
 export function SET_SELECTED_GAME_URL (state, gameUrl) {
 	state.selected_game_url = gameUrl;
 }
+
+export function SET_SELECTED_GAME_NAME (state, gameName) {
+	state.selected_game_name = gameName;
+}
+
+export function SET_SEARCH_QUERY (state, searchQuery) {
+	state.searchQuery = searchQuery;
+}

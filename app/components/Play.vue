@@ -1,5 +1,8 @@
 <template>
-    <Page actionBarHidden="false">
+    <Page>
+        <ActionBar :title="gameName">
+            <NavigationButton text="" android.systemIcon="ic_menu_back" @tap="goBack" />
+        </ActionBar>
         <WebView v-if="gameUrl" loadFinished="onLoadFinished" :src="gameUrl" />
         <FlexboxLayout flexDirection="column" v-else>
             <Label text="Game not available." height="100" class="game-na" />
@@ -13,10 +16,12 @@
     export default {
         created() {
             this.gameUrl = store.state.selected_game_url;
+            this.gameName = store.state.selected_game_name;
         },
         data() {
             return {
-                gameUrl: ""
+                gameUrl: "",
+                gameName: ""
             };
         }
     }
