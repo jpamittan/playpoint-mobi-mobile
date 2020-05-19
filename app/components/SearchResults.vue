@@ -1,8 +1,8 @@
 <template>
     <Page>
-        <ActionBar color="#FFFFFF" backgroundColor="#41B883">
+        <ActionBar color="#FFFFFF" backgroundColor="#000000">
             <StackLayout orientation="horizontal">
-                <Image src="~/assets/images/playpoint_logo.png" width="100" verticalAlignment="center" />
+                <Image src="~/assets/images/game-plus-logo.png" width="130" verticalAlignment="center" />
             </StackLayout>
         </ActionBar>
         <FlexboxLayout flexDirection="column" v-if="isLoading">

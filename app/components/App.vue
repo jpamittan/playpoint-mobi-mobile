@@ -1,8 +1,8 @@
 <template>
-    <Page>
-        <ActionBar color="#FFFFFF" backgroundColor="#41B883">
+    <Page :actionBarHidden="isLoading">
+        <ActionBar color="#FFFFFF" backgroundColor="#000000">
             <StackLayout orientation="horizontal">
-                <Image src="~/assets/images/playpoint_logo.png" width="100" verticalAlignment="center" />
+                <Image src="~/assets/images/game-plus-logo.png" width="130" verticalAlignment="center" />
             </StackLayout>
             <ActionItem @tap="onSearch"
                 ios.systemIcon="12" ios.position="right"
@@ -10,7 +10,7 @@
             />
         </ActionBar>
         <FlexboxLayout flexDirection="column" v-if="isLoading">
-            <Label text="Loading please wait..." height="100" class="game-na" />
+            <Image src="~/assets/images/loading.jpg" verticalAlignment="center" />
         </FlexboxLayout>
         <TabView v-else iosIconRenderingMode="alwaysOriginal" selectedTabTextColor="#FFC300">
             <TabViewItem title="Spotlight" iconSource="~/assets/images/game-icon.png" stretch="none">
@@ -61,7 +61,9 @@
             store.dispatch('SPOTLIGHTS')
             .then(response => {
                 this.spotlightList = store.state.spotlights;
-                this.isLoading = false;
+                setTimeout(() => {
+                    this.isLoading = false;
+                }, 1000);
             });
             store.dispatch('CATEGORIES')
             .then(response => {
@@ -151,9 +153,5 @@
         color: #FFFFFF;
         font-weight: normal;
         text-align: left;
-    }
-    .game-na {
-        text-align: center;
-        color: #FFFFFF;
     }
 </style>
